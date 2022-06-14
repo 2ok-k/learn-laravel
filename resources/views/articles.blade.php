@@ -48,4 +48,13 @@
             Aucun post dans la base de données
         </span>
     @endif
+    <h1>Liste des vidéos</h1>
+    @forelse ($video -> comments as $comment) 
+        <h4 style="margin-left: 10%">{{ $comment -> content}}</h4>
+        <!--<div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+        </div>-->
+    @empty
+        <h4 style="margin-left: 10%">Aucun commentaire pour cette vidéo.</h4>
+    @endforelse
 @endsection
