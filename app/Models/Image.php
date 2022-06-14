@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Artist;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Image extends Model
 {
@@ -12,5 +13,9 @@ class Image extends Model
     //Une image appartient à un seul post
     public function post(){
         return $this->belongsTo(Post::class);
+    }
+
+    public function artist(){
+        return $this->hasOne(Artist::class);
     }
 }
