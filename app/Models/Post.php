@@ -16,9 +16,9 @@ class Post extends Model
     protected $fillable = ['title','content'];//Je veux que tu remplisses "title" et "content" quand je te le demande
 
     //Nous avons un post qui detient plusieurs commentaires
-    /*public function comments(){
+    public function comments(){
         return $this->hasMany(Comment::class);
-    }*/
+    }
 
     //Un post peut avoir une et une seule image
     public function image(){
@@ -30,12 +30,4 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    //Relation polymorphique
-    public function comments(){
-        return $this->morphMany(Comment::class,'commentable');
-    }
-
-    public function imageArtist(){
-        return $this->hasOneThrough(Artist::class , Image::class);
-    }
 }

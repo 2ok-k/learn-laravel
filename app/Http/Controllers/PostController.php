@@ -12,9 +12,9 @@ class PostController extends Controller
     public function index(){
 
         $posts = Post::all();
-        $video = Video::find(1);
+        //$video = Video::find(1);
         //$posts = Post::orderBy('title')->get();
-        return view('articles',compact('posts','video'));
+        return view('articles',compact('posts'));
         //return view('articles')->with('title',$title);
     }
 
@@ -46,7 +46,7 @@ class PostController extends Controller
         return view('contact');
     }
 
-    public function register(){
+    /*public function register(){
         $post = Post::find(11);
         $video = Video::find(1);
 
@@ -59,5 +59,5 @@ class PostController extends Controller
 
         $comment3 = new Comment(['content' => 'Mon troisième commentaire']);
         $video ->comments()->save($comment3);
-    }
+    }*/
 }
