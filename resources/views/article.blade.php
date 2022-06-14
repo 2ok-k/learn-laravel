@@ -12,5 +12,10 @@
     @empty
         <h4 style="margin-left: 10%">Aucun commentaire pour ce post.</h4>
     @endforelse
+    <hr>
+    @forelse ($post -> tags as $tag)
+        <h5>{{ $tag -> name}}</h5>
+    @empty
+        <h5>Aucun tag pour ce post</h5>
+    @endforelse
 @endsection
-    

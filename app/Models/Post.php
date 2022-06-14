@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use App\Models\Image;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
@@ -18,10 +19,15 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    //Un post à une et une seule image
+    //Un post peut avoir une et une seule image
     public function image(){
         return $this->hasOne(Image::class);
     }
 
-    //protected $primaryKey = 'post_id';//Rédefinir le id s'il yavait pas d'ID
+    //Un post peut avoir plusieurs tags
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+
+    
 }
