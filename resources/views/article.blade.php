@@ -18,4 +18,6 @@
     @empty
         <h5>Aucun tag pour ce post</h5>
     @endforelse
+
+    <span>Commentaire le plus récent : {{ $post->latestComment->content }}</span>
 @endsection
