@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="POST" action="{{ route('posts.store') }}">
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="text-danger">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endif
+    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -13,11 +20,9 @@
                 <textarea class="form-control" id="content" rows="3" name="content"></textarea>
             </div>
         </div>
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="avatar"><br>
         <!--<div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
             <label for="inputAddress2">Address 2</label>
             <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
         </div>

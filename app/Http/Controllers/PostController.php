@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Video;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -30,10 +31,15 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        /*$post = new Post();
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->save();*/
+
+        Storage::disk('local')->put('avatars', $request->file('avatar'));
+
+        die();
+        $request -> validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
         Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
